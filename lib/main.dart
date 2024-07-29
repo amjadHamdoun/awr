@@ -9,6 +9,7 @@ import 'core/constant/key_constants.dart';
 import 'core/theme/app_theme.dart';
 import 'core/utils/location_background_service.dart';
 import 'core/utils/request_location.dart';
+import 'core/utils/request_notification.dart';
 import 'injection.dart' as di;
 import 'package:upgrader/upgrader.dart';
 import 'screens/home/home_page.dart';
@@ -20,6 +21,7 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   await Preferences.init();
   await requestLocationPermission();
+  await requestNotification();
   await initializeLocationBackgroundService();
   await dotenv.load(fileName: ".env");
 

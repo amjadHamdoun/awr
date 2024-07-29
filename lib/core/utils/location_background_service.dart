@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:ui';
 import 'package:awr_vendor/core/constant/key_constants.dart';
 import 'package:awr_vendor/preference.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
@@ -53,6 +54,8 @@ void onStart(ServiceInstance service) async {
   WidgetsFlutterBinding.ensureInitialized();
   await di.init();
   await Preferences.init();
+  await dotenv.load(fileName: ".env");
+
   SendMyLocationSocketEvent sendMyLocationSocketEvent=di.sl();
 
   service.on("stop").listen((event) {
